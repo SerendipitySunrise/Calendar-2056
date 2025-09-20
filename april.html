@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Calendar 2056 - January</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body background="backgroundmonth.jpg" style="background-size: contain;">
+
+    <div class="month">
+            <h2 style="text-align: center;">April</h2>
+            <table class="table table-borderless">
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="holiday" data-holiday="Black Saturday">1</td>
+                </tr>
+                <tr>
+                    <td class="holiday" data-holiday="Easter Sunday">2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td class="holiday" data-holiday="The Day of Valor">9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td class="holiday" data-holiday="Eidul-Fitar">17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="popup-overlay" id="holiday-popup">
+        </div>
+
+        <div class="navigation-arrows">
+        <a href="march.html" class="arrow left-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1"/>
+            </svg>
+        </a>
+        <a href="may.html" class="arrow right-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16" >
+                <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"/>
+            </svg>
+        </a>
+    </div>
+    
+    <script>
+        const holidayData = {
+            "Black Saturday": {
+                description: "Day of mourning and reflection, observed before Easter Sunday as Jesus lay in the tomb.",
+                image: "Black Saturday.jpg"
+            },
+            "Easter Sunday": {
+                description: "Joyful Christian celebration of the resurrection of Jesus Christ, symbolizing hope and renewal.",
+                image: "Easter Sunday.jpg"
+            },
+            "The Day of Valor": {
+                description: " (Araw ng Kagitingan) Honors the courage of Filipino and American soldiers during World War II, particularly the Bataan Death March.",
+                image: "The Day of Valor.jpg"
+            },
+            "Eidul-Fitar": {
+                description: " A major Muslim festival marking the end of Ramadan, celebrated with prayers, feasts, and giving of charity.",
+                image: "Eidul-Fitar.jpg"
+            }
+            
+        };
+
+        
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const holidays = document.querySelectorAll('.holiday');
+            const popupOverlay = document.getElementById('holiday-popup');
+
+            holidays.forEach(holiday => {
+                holiday.addEventListener('click', () => {
+                    const holidayName = holiday.getAttribute('data-holiday');
+                    const data = holidayData[holidayName];
+
+                    if (data) {
+                        const popupContent = `
+                            <div class="popup-content">
+                                <span class="close-btn">&times;</span>
+                                <h3>${holidayName}</h3>
+                                <img src="${data.image}" alt="${holidayName}">
+                                <p>${data.description}</p>
+                            </div>
+                        `;
+                        popupOverlay.innerHTML = popupContent;
+                        popupOverlay.classList.add('show');
+                        
+                        document.querySelector('.close-btn').addEventListener('click', () => {
+                            popupOverlay.classList.remove('show');
+                            setTimeout(() => popupOverlay.innerHTML = '', 300);
+                        });
+                    }
+                });
+            });
+
+            popupOverlay.addEventListener('click', (e) => {
+                if (e.target === popupOverlay) {
+                    popupOverlay.classList.remove('show');
+                    setTimeout(() => popupOverlay.innerHTML = '', 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

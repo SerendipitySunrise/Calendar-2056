@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Calendar 2056</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2e004a; 
+            font-family: 'Press Start 2P', cursive;
+            color: #d8c1ff; 
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(180deg, #6c469f 0%, #2e004a 100%);
+            overflow: hidden;
+        }
+
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 5;
+            color: #ffb8d6;
+            text-shadow: 
+                -2px -2px 0 #8a3f5a,
+                2px -2px 0 #8a3f5a,
+                -2px 2px 0 #8a3f5a,
+                2px 2px 0 #8a3f5a;
+        }
+
+        .text-container h1 {
+            font-size: 6em;
+            margin: 0;
+        }
+
+        .text-container p {
+            font-size: 3em;
+            margin-top: 10px;
+        }
+
+        .arrow {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            z-index: 6;
+            cursor: pointer;
+            color: #d8c1ff;
+            text-shadow: 
+                -2px -2px 0 #6c469f,
+                2px -2px 0 #6c469f,
+                -2px 2px 0 #6c469f,
+                2px 2px 0 #6c469f;
+        }
+    </style>
+
+</head>
+<body background="mainbackground.jpg" style="background-size: contain;">
+        <div class="text-container">
+            <h1>CALENDAR</h1>
+            <p>2056</p>
+        </div>
+        <div class="arrow">
+            <a href="january.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16" >
+                    <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"/>
+                </svg>
+            </a>
+            
+            </a>
+        </div>
+    </div>
+</body>
+</html>
